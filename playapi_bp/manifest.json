@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "PlayAPI",
+    "uuid": "6e6fb675-a50b-42b9-b8df-b1d8157768ec",
+    "version": [1, 0, 0],
+    "description": "PlayAPI",
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "3ea5e180-ee2f-4dea-9101-8b87e8565abd",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "script",
+      "uuid": "4c08de37-dad7-4a9f-b520-15b47ce1a4f3",
+      "version": "1.0.0",
+      "language": "javascript",
+      "entry": "scripts/index.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "3.0.0-alpha"
+    }
+  ]
+}
