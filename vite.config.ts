@@ -33,9 +33,12 @@ export default ({ mode }) =>
       lib: {
         entry: resolve(__dirname, "src/main.ts"),
         formats: ["es"],
-        fileName: `index`,
       },
       rollupOptions: {
+        output: {
+          preserveModules: true,
+          entryFileNames: "[name].js",
+        },
         external: [
           "@minecraft/server",
           "@minecraft/server-ui",
@@ -43,7 +46,6 @@ export default ({ mode }) =>
           ...builtinModules,
         ],
       },
-      emptyOutDir: true,
-      outDir: "../playapi_bp/scripts",
+      outDir: "playapi_bp/scripts",
     },
   });
