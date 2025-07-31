@@ -26,7 +26,7 @@ export class DynamicJson<T> {
   free(): void {
     this.dynamic_data?.free();
   }
-  with_set(callback: (arg0: T) => T) {
+  update(callback: (arg0: T) => T) {
     const value = this.get();
     if (value != undefined) {
       this.set(callback(value));

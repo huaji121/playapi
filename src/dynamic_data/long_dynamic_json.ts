@@ -27,13 +27,13 @@ export class LongDynamicJson<T> {
       for (let index = 0; index < len; index++) {
         this.data[index] = new DynamicData<string>(
           target,
-          this.get_idx_id(index)
+          this.getIdxId(index)
         );
       }
     }
   }
 
-  get_idx_id(idx: number) {
+  getIdxId(idx: number) {
     return `${this.id}_${idx}`;
   }
 
@@ -44,7 +44,7 @@ export class LongDynamicJson<T> {
     for (let ele of split_by_bytes(value, MAX_CHUNK_LENGTH)) {
       this.data[length_counter] = new DynamicData<string>(
         this.target,
-        this.get_idx_id(length_counter)
+        this.getIdxId(length_counter)
       );
       this.data[length_counter].set(ele);
       length_counter++;
@@ -66,7 +66,7 @@ export class LongDynamicJson<T> {
     this.set_raw(JSON.stringify(value));
   }
 
-  public get_raw(): string {
+  public getRaw(): string {
     return this.data
       .map((ele) => {
         return ele.get();
@@ -75,11 +75,11 @@ export class LongDynamicJson<T> {
   }
 
   public get(): T {
-    return JSON.parse(this.get_raw());
+    return JSON.parse(this.getRaw());
   }
 
   //获取的是分块个数而非字符长度
-  public get_count_of_chunks() {
+  public getCountOfChunks() {
     return this.length.get();
   }
 
@@ -88,5 +88,12 @@ export class LongDynamicJson<T> {
       e.free();
     });
     this.data = [];
+  }
+
+  public update(callback: (arg0: T) => T) {
+    const value = this.get();
+    if (value != undefined) {
+      this.set(callback(value));
+    }
   }
 }

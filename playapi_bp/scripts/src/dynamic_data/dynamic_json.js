@@ -1,11 +1,11 @@
 import { DynamicData as s } from "./dynamic_data.js";
 class n {
   dynamic_data;
-  constructor(t, i, a) {
+  constructor(t, a, i) {
     this.dynamic_data = new s(
       t,
-      i,
-      a == null ? void 0 : JSON.stringify(a)
+      a,
+      i == null ? void 0 : JSON.stringify(i)
     );
   }
   get() {
@@ -24,9 +24,9 @@ class n {
   free() {
     this.dynamic_data?.free();
   }
-  with_set(t) {
-    const i = this.get();
-    i != null && this.set(t(i));
+  update(t) {
+    const a = this.get();
+    a != null && this.set(t(a));
   }
 }
 export {
