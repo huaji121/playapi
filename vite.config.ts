@@ -46,6 +46,6 @@ export default ({ mode }) =>
           ...builtinModules,
         ],
       },
-      outDir: "playapi_bp/scripts",
+      outDir: resolve(__dirname, "playapi_bp/scripts"),
     },
   });
