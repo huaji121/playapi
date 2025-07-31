@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite build --watch",
-    "build": "vite build"
+    "dev": "vite build --mode development --watch",
+    "copy": "vite build --mode development",
+    "build": "vite build --mode production"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",

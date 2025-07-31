@@ -8,38 +8,42 @@ const game_root = resolve(
   "Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState/games/com.mojang"
 );
 const bp_target = resolve(game_root, "development_behavior_packs");
-// const rp_target = resolve(game_root, "development_resource_packs");
+const rp_target = resolve(game_root, "development_resource_packs");
 
-export default defineConfig({
-  plugins: [
-    viteStaticCopy({
-      targets: [
-        {
-          src: "playapi_bp/*",
-          dest: resolve(bp_target, "playapi_bp"),
-        },
-        // {
-        //   src: "playapi_rp/*",
-        //   dest: resolve(rp_target, "playapi_rp"),
-        // },
-      ],
-    }),
-  ],
-  build: {
-    lib: {
-      entry: resolve(__dirname, "src/main.ts"),
-      formats: ["es"],
-      fileName: `index`,
+export default ({ mode }) =>
+  defineConfig({
+    plugins:
+      mode === "development"
+        ? [
+            viteStaticCopy({
+              targets: [
+                {
+                  src: "playapi_bp/*",
+                  dest: resolve(bp_target, "playapi_bp"),
+                },
+                {
+                  src: "playapi_rp/*",
+                  dest: resolve(rp_target, "playapi_rp"),
+                },
+              ],
+            }),
+          ]
+        : [],
+    build: {
+      lib: {
+        entry: resolve(__dirname, "src/main.ts"),
+        formats: ["es"],
+        fileName: `index`,
+      },
+      rollupOptions: {
+        external: [
+          "@minecraft/server",
+          "@minecraft/server-ui",
+          "commander",
+          ...builtinModules,
+        ],
+      },
+      emptyOutDir: true,
+      outDir: "../playapi_bp/scripts",
     },
-    rollupOptions: {
-      external: [
-        "@minecraft/server",
-        "@minecraft/server-ui",
-        "commander",
-        ...builtinModules,
-      ],
-    },
-    emptyOutDir: true,
-    outDir: "../playapi_bp/scripts",
-  },
-});
+  });

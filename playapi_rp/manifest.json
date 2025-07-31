@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "PlayAPI",
+    "name": "PlayAPI",
+    "uuid": "c89bac94-fd02-4750-9f1a-b02b54c02b39",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "39dd3f3e-5e05-4b69-b9df-a5d4129fc317",
+      "description": "PlayAPI",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "6e6fb675-a50b-42b9-b8df-b1d8157768ec",
+      "version": [1, 0, 0]
+    }
+  ]
+}
