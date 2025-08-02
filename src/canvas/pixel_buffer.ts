@@ -42,6 +42,13 @@ export class PixelBuffer {
   }
 
   rotate(rotation: Vector3, distanceFromSurface: number) {
+    //位置修正，对其方块
+    const correction = {
+      x: -this.options.size.x,
+      y: 1,
+      z: -this.options.size.y,
+    };
+
     //一定要赋值
     this.options.rotation = rotation;
     this.molangVariableMapBuffer.setVector3("variable.rotation", rotation);
@@ -56,11 +63,14 @@ export class PixelBuffer {
     for (let i = 0; i < this.height; i++) {
       for (let j = 0; j < this.width; j++) {
         const offset = Vector3Utils.add(
-          Vector3Utils.scale(localRight, this.options.size.x * 2 * j),
           Vector3Utils.add(
-            Vector3Utils.scale(localDown, this.options.size.y * 2 * i),
-            Vector3Utils.scale(rotation, distanceFromSurface)
-          )
+            Vector3Utils.scale(localRight, this.options.size.x * 2 * j),
+            Vector3Utils.add(
+              Vector3Utils.scale(localDown, this.options.size.y * 2 * i),
+              Vector3Utils.scale(rotation, distanceFromSurface)
+            )
+          ),
+          correction
         );
 
         this.pixelOffsetArrayBuffer[i][j] = offset;

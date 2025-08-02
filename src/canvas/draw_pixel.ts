@@ -16,7 +16,7 @@ export interface IPixelOptions {
 export const defaultPixelOptions: IPixelOptions = {
   color: { red: 1.0, green: 1.0, blue: 1.0 },
   lifetime: 2.0,
-  size: { x: 0.5 / 64, y: 0.5 / 64 },
+  size: { x: 0.5 / 64, y: 0.5 / 64 }, //一个方块为.5*.5，此处代表1/64个方块大小
   rotation: { x: 0, y: 0, z: 1 },
 };
 

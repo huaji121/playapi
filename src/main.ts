@@ -67,11 +67,12 @@ system.afterEvents.scriptEventReceive.subscribe((e) => {
       world.sendMessage("开始");
       let pixelBuffer = new PixelBuffer(64, 64, {
         ...defaultPixelOptions,
-        rotation: { x: 0, y: 1, z: 5 },
+        rotation: { x: 1, y: 1, z: 1 },
+        size: { x: 0.5 / 64, y: 0.5 / 64 },
       });
 
       system.runInterval(() => {
-        pixelBuffer.drawOnce({ x: 0, y: -59, z: 0 });
+        pixelBuffer.drawOnce({ x: 0, y: -60, z: 0 });
       }, 1.5 * 20);
 
       break;
