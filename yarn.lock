@@ -137,6 +137,19 @@
   resolved "https://registry.yarnpkg.com/@minecraft/common/-/common-1.2.0.tgz#a00d4130dcd5084dfd30e85e108c6d58eae8358b"
   integrity sha512-JdmEq4P3Z/FtoBzhLijFgMSVFnFRrUoLwY8DHHrgtFo0mfLTOLTB1RErYjLMsA6b7BGVNxkX/pfFRiH7QZ0XwQ==
 
+"@minecraft/debug-utilities@1.0.0-beta.1.21.95-stable":
+  version "1.0.0-beta.1.21.95-stable"
+  resolved "https://registry.yarnpkg.com/@minecraft/debug-utilities/-/debug-utilities-1.0.0-beta.1.21.95-stable.tgz#f652ebbce7300d92e8d3b0c7d58f2bf337cb5b5f"
+  integrity sha512-gqndC8AFNkH+MeKDjsPJu5dXIdKR0mjPCkHNZW32jOqpnbPgXoGJImSFRhz+Ia1qmXKmqiz0+xtJMjxTs5GCbw==
+  dependencies:
+    "@minecraft/common" "^1.0.0"
+    "@minecraft/server" "^1.17.0 || ^2.0.0"
+
+"@minecraft/math@2.2.8":
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/@minecraft/math/-/math-2.2.8.tgz#8f981c72364439818b86d865943dad8ed5aa9052"
+  integrity sha512-uhOYDy1i7WY6d2gyTQy4WAqXAoB3i7O4/R1S82E9MDZOdkOwyoeEXZa4SCzLfY7dRjrXQp6fF+lDtxqV8NhHAg==
+
 "@minecraft/server-ui@2.1.0-beta.1.21.95-stable":
   version "2.1.0-beta.1.21.95-stable"
   resolved "https://registry.yarnpkg.com/@minecraft/server-ui/-/server-ui-2.1.0-beta.1.21.95-stable.tgz#95718dd7ff1ba5caf6fcc7db06b793fed4980fd6"
@@ -152,7 +165,7 @@
   dependencies:
     "@minecraft/common" "^1.1.0"
 
-"@minecraft/server@^2.0.0":
+"@minecraft/server@^1.17.0 || ^2.0.0", "@minecraft/server@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@minecraft/server/-/server-2.0.0.tgz#6d9c4c0a7e8d9990dcb657c6fde89469330fbf2e"
   integrity sha512-X2LmT82eO0oCjOFaFgg6zoGenAUSyrG+YvIbe7/FSPj9hpMt4BtOIs7axoQUUvMx2NNbq8uEsnQadMMrDDBmUA==

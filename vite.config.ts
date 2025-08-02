@@ -42,6 +42,7 @@ export default ({ mode }) =>
         external: [
           "@minecraft/server",
           "@minecraft/server-ui",
+          "@minecraft/debug-utilities",
           "commander",
           ...builtinModules,
         ],
