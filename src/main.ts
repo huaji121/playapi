@@ -7,7 +7,7 @@ import {
   drawPixel,
   getPixelOptionsValue,
 } from "./canvas/draw_pixel";
-import { PixelBuffer } from "./canvas/pixel_buffer";
+import { PixelBufferDrawer } from "./canvas/pixel_buffer_drawer";
 
 const value = deferredRegister.register(
   () => new DynamicJson(world, "test", { a: 2 })
@@ -38,41 +38,24 @@ system.afterEvents.scriptEventReceive.subscribe((e) => {
       break;
 
     case "dbg:t4":
-      system.runInterval(() => {
-        // world.sendMessage("Test");
-
-        const config = getPixelOptionsValue({
-          ...defaultPixelOptions,
-          lifetime: 1.5,
-        });
-
-        for (let i = 0; i < 64; i++) {
-          for (let j = 0; j < 64; j++) {
-            drawPixel(
-              {
-                x: 0 + 0.5 / 64 + i * (1 / 64),
-                y: -59 - 0.5 / 64 - j * (1 / 64),
-                z: 0.01,
-              },
-              config
-            );
-          }
-        }
-
-        world.sendMessage("刷新一次");
-      }, 1.5 * 20);
       break;
 
     case "dbg:t5":
       world.sendMessage("开始");
-      let pixelBuffer = new PixelBuffer(64, 64, {
+      let pixelBufferDrawer = new PixelBufferDrawer(32, 32, {
         ...defaultPixelOptions,
-        rotation: { x: 1, y: 1, z: 1 },
-        size: { x: 0.5 / 64, y: 0.5 / 64 },
+        rotation: { x: 0, y: 0, z: 1 },
+        size: { x: 0.5 / 16, y: 0.5 / 16 },
       });
 
+      pixelBufferDrawer.pixelBuffer.clear({ red: 0.5, green: 0.5, blue: 0.5 });
+      pixelBufferDrawer.pixelBuffer.drawPixel(
+        { x: 24, y: 31 },
+        { red: 1, green: 0, blue: 1 }
+      );
+
       system.runInterval(() => {
-        pixelBuffer.drawOnce({ x: 0, y: -60, z: 0 });
+        pixelBufferDrawer.drawOnce({ x: -1, y: -58, z: -1 });
       }, 1.5 * 20);
 
       break;
